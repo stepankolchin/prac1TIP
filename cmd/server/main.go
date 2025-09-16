@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -46,7 +47,7 @@ func main() {
 		w.Header().Set("Content-Type", "application/json")
 		_ = json.NewEncoder(w).Encode(health{
 			Status: "ok",
-			Time:   "<RFC3339>",
+			Time:   time.Now().Format(time.RFC3339),
 		})
 	})
 
